@@ -4,133 +4,245 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EJ | About Me</title>
+
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-  html,body{height:100%;overflow-x:hidden;scroll-behavior:smooth;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+html,body{height:100%;overflow-x:hidden;scroll-behavior:smooth;}
 
-  body {
-    background: linear-gradient(to right, #00264d, #990000);
-    color:#fff;
-    animation:bgShift 20s ease-in-out infinite alternate;
-  }
-  @keyframes bgShift{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
-  }
+body{
+  background: linear-gradient(to right, #00264d, #990000);
+  color:#fff;
+}
 
-  .container{
-    max-width:500px;
-    margin:30px auto;
-    padding:30px 20px;
-    background:rgba(0,0,0,0.35);
-    border-radius:20px;
-    box-shadow:0 0 40px rgba(0,0,0,0.7);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-  }
+/* container */
+.container{
+  max-width:500px;
+  margin:30px auto;
+  padding:30px 20px;
+  background:rgba(0,0,0,0.35);
+  border-radius:20px;
+  box-shadow:0 0 40px rgba(0,0,0,0.7);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  position:relative;
+}
 
-  .profile-pic{
-    width:180px;height:180px;
-    border-radius:50%;
-    object-fit:cover;
-    border:5px solid #fff;
-    margin-bottom:20px;
-    animation:float 4s ease-in-out infinite;
-  }
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+/* payment button */
+.payment-btn{
+  position:absolute;
+  top:10px;
+  right:10px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  background:rgba(0,0,0,0.6);
+  padding:6px 10px;
+  border-radius:20px;
+  cursor:pointer;
+  font-size:0.9rem;
+}
+.payment-btn::before{
+  content: "💰";
+  font-size:1rem;
+}
+.payment-btn span{
+  margin-left:4px;
+}
 
-  h1{font-size:2rem;margin-bottom:15px;text-align:center;text-shadow:0 0 15px #fff,0 0 30px #fff,0 0 45px #fff;}
-  p{font-size:1rem;text-align:center;line-height:1.5;margin-bottom:25px;text-shadow:0 0 10px #fff,0 0 20px #fff,0 0 30px #fff;}
+/* profile */
+.profile-pic{
+  width:180px;height:180px;
+  border-radius:50%;
+  object-fit:cover;
+  border:5px solid #fff;
+  margin-bottom:20px;
+}
 
-  .socials{
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-    width:100%;
-    align-items:center;
-    margin-bottom:25px;
-  }
-  .socials a{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    text-decoration:none;
-    color:#fff;
-    font-weight:bold;
-    padding:12px 20px;
-    border-radius:25px;
-    background:rgba(255,255,255,0.15);
-    backdrop-filter:blur(5px);
-    transition: all 0.3s ease;
-    width:100%;
-    justify-content:center;
-  }
-  .socials a img{width:24px;height:24px;}
-  .socials a:hover{transform:scale(1.05);background:rgba(255,255,255,0.35);color:#000;}
+h1{font-size:2rem;margin-bottom:15px;text-align:center;text-shadow:0 0 15px #fff,0 0 30px #fff;}
+p{font-size:1rem;text-align:center;line-height:1.5;margin-bottom:25px;text-shadow:0 0 10px #fff;}
 
-  .action-buttons{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
-    width:100%;
-    margin-bottom:20px;
-  }
-  .action-buttons a{
-    padding:12px 0;
-    border-radius:30px;
-    font-weight:bold;
-    text-decoration:none;
-    color:#fff;
-    background: rgba(0,0,0,0.7);
-    box-shadow:0 0 15px rgba(255,255,255,0.4);
-    flex:1 1 45%;
-    text-align:center;
-    transition: all 0.3s ease;
-  }
-  .action-buttons a:hover{transform: scale(1.05);background:rgba(0,0,0,0.9);}
+/* socials */
+.socials{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  width:100%;
+  align-items:center;
+  margin-bottom:25px;
+}
+.socials a{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:#fff;
+  font-weight:bold;
+  padding:12px 20px;
+  border-radius:25px;
+  background:rgba(255,255,255,0.15);
+  width:100%;
+  justify-content:center;
+}
+.socials a img{width:24px;height:24px}
 
-  .packages-button{
-    padding:15px 0;
-    border-radius:35px;
-    font-weight:bold;
-    text-decoration:none;
-    color:#fff;
-    background: #ff3b3b;
-    width:100%;
-    text-align:center;
-    font-size:1.2rem;
-    box-shadow:0 0 20px rgba(255,59,59,0.7);
-    transition: all 0.3s ease;
-  }
-  .packages-button:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 30px rgba(255,59,59,1);
-  }
+/* buttons */
+.action-buttons{
+  display:flex;
+  gap:15px;
+  width:100%;
+  margin-bottom:20px;
+}
+.action-buttons a{
+  flex:1;
+  padding:12px 0;
+  border-radius:30px;
+  font-weight:bold;
+  text-decoration:none;
+  color:#fff;
+  background: rgba(0,0,0,0.7);
+  text-align:center;
+}
 
-  @media(max-width:400px){
-    h1{font-size:1.5rem;}
-    p{font-size:0.95rem;}
-    .profile-pic{width:140px;height:140px;}
-    .action-buttons a{flex:1 1 100%;}
-  }
+/* packages button */
+.packages-button{
+  padding:15px 0;
+  border-radius:35px;
+  font-weight:bold;
+  text-decoration:none;
+  color:#fff;
+  background:#ff3b3b;
+  width:100%;
+  text-align:center;
+  font-size:1.2rem;
+  box-shadow:0 0 20px rgba(255,59,59,0.8);
+  animation:floatGlow 2.5s ease-in-out infinite alternate;
+}
+
+/* floating glow animation */
+@keyframes floatGlow{
+  0%{transform:translateY(0); box-shadow:0 0 20px rgba(255,59,59,0.8);}
+  50%{transform:translateY(-10px); box-shadow:0 0 35px rgba(255,59,59,1);}
+  100%{transform:translateY(0); box-shadow:0 0 20px rgba(255,59,59,0.8);}
+}
+
+/* ===== PAYMENT POPUP ===== */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.75);
+  backdrop-filter:blur(6px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:10;
+}
+
+.popup{
+  width:320px;
+  border-radius:20px;
+  padding:20px;
+  background:#111;
+  position:relative;
+}
+
+.close{
+  position:absolute;
+  right:10px;
+  top:6px;
+  cursor:pointer;
+  font-size:18px;
+}
+
+/* account cards */
+.acc{
+  border-radius:15px;
+  padding:14px;
+  margin-bottom:12px;
+  text-align:center;
+  color:#fff;
+}
+
+/* CBE */
+.cbe{
+  background:#4E1380;
+  color:#fff;
+}
+
+/* Telebirr */
+.tele{
+  background:#90D5FF;
+  color:#000;
+}
+
+.acc img{
+  width:70px;
+  margin-bottom:6px;
+}
+
+.num{
+  font-weight:bold;
+  margin:4px 0;
+  font-size:1.05rem;
+}
+
+.holder{
+  font-size:0.6rem;
+  opacity:0.85;
+}
+
+.copy-btn{
+  margin-top:6px;
+  font-size:0.7rem;
+  padding:4px 8px;
+  border-radius:10px;
+  background:rgba(0,0,0,0.4);
+  color:#fff;
+  cursor:pointer;
+}
+
+/* toast */
+.toast{
+  position:fixed;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#000;
+  color:#fff;
+  padding:8px 14px;
+  border-radius:8px;
+  opacity:0;
+  transition:0.3s;
+  z-index:20;
+}
+
+@media(max-width:400px){
+  h1{font-size:1.5rem;}
+  p{font-size:0.95rem;}
+  .profile-pic{width:140px;height:140px;}
+  .action-buttons a{flex:1 1 100%;}
+}
 </style>
 </head>
+
 <body>
 
 <div class="container">
-  <img src="your-picture.jpg" alt="EJ Picture" class="profile-pic">
+
+  <!-- PAYMENT BUTTON -->
+  <div class="payment-btn" onclick="openPay()"><span>Payment</span></div>
+
+  <img src="your-picture.jpg" class="profile-pic">
+
   <h1>Hi, I'm EJ!</h1>
   <p>I'm a TikTok content creator & Social Media Manager. I make content, grow accounts, and create vibes that hit. Welcome to my world of creativity.</p>
 
   <div class="socials">
-    <a href="https://www.tiktok.com/@justtt_ej" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046128.png"> TikTok 1: @justtt_ej</a>
-    <a href="https://www.tiktok.com/@nottt_ej" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046128.png"> TikTok 2: @nottt_ej</a>
-    <a href="https://www.instagram.com/justtt_ej" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"> Instagram: @justtt_ej</a>
-    <a href="https://t.me/justtt_ej" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"> Telegram: @justtt_ej</a>
-    <a href="https://www.youtube.com/@ej_vlogs1" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"> YouTube: ej_vlogs1</a>
+    <a href="https://www.tiktok.com/@justtt_ej" target="_blank"><img src="tiktok.png"> TikTok 1: @justtt_ej</a>
+    <a href="https://www.tiktok.com/@nottt_ej" target="_blank"><img src="tiktok.png"> TikTok 2: @nottt_ej</a>
+    <a href="https://www.instagram.com/justtt_ej" target="_blank"><img src="instagram.png"> Instagram</a>
+    <a href="https://t.me/justtt_ej" target="_blank"><img src="telegram.png"> Telegram</a>
+    <a href="https://www.youtube.com/@ej_vlogs1" target="_blank"><img src="youtube.png"> YouTube</a>
   </div>
 
   <div class="action-buttons">
@@ -139,7 +251,46 @@
   </div>
 
   <a href="packages.html" class="packages-button">Packages 🎁</a>
+
 </div>
+
+<!-- PAYMENT POPUP -->
+<div class="overlay" id="overlay">
+  <div class="popup">
+    <div class="close" onclick="closePay()">✕</div>
+
+    <div class="acc cbe">
+      <img src="cbe.png">
+      <div class="num" id="cbeNum">1000733211796</div>
+      <div class="holder">ejunayehu wendimu</div>
+      <div class="copy-btn" onclick="copyAcc('cbeNum')">Copy</div>
+    </div>
+
+    <div class="acc tele">
+      <img src="telebirr.png">
+      <div class="num" id="teleNum">0923406940</div>
+      <div class="holder">wondimu</div>
+      <div class="copy-btn" onclick="copyAcc('teleNum')">Copy</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast">Account copied!</div>
+
+<script>
+function openPay(){ document.getElementById("overlay").style.display="flex"; }
+function closePay(){ document.getElementById("overlay").style.display="none"; }
+
+function copyAcc(id){
+  const text=document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text);
+
+  const toast=document.getElementById("toast");
+  toast.style.opacity=1;
+  setTimeout(()=>toast.style.opacity=0,1800);
+}
+</script>
 
 </body>
 </html>
