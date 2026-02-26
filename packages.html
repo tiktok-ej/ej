@@ -17,7 +17,12 @@
     padding:30px 20px;
   }
 
-  h1{text-align:center;margin-bottom:25px;font-size:2rem;text-shadow:0 0 15px #fff,0 0 30px #fff,0 0 45px #fff;}
+  h1{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:2rem;
+    text-shadow:0 0 15px #fff,0 0 30px #fff,0 0 45px #fff;
+  }
 
   .package-buttons{
     display:flex;
@@ -28,30 +33,54 @@
     margin-bottom:30px;
   }
 
-  .package-buttons button{
+  .package{
     display:flex;
+    flex-direction:column;
     align-items:center;
-    justify-content:center;
+    gap:5px;
+  }
+
+  .package button{
+    width:100%;
     padding:15px;
     font-size:1.1rem;
     font-weight:bold;
     border:none;
     border-radius:30px;
-    background:#ff3b3b;
     color:#fff;
-    box-shadow:0 0 20px rgba(255,59,59,0.7);
     cursor:pointer;
     transition: all 0.3s ease;
   }
 
-  .package-buttons button:hover{
+  /* Active button */
+  .active{
+    background:#ff3b3b;
+    box-shadow:0 0 20px rgba(255,59,59,0.7);
+  }
+
+  .active:hover{
     transform:scale(1.05);
     box-shadow:0 0 30px rgba(255,59,59,1);
   }
 
+  /* Disabled button */
+  .disabled{
+    background:#555;
+    color:#ccc;
+    cursor:default;
+    box-shadow:none;
+  }
+
+  .coming{
+    font-size:0.6rem;
+    font-weight:300;
+    letter-spacing:1px;
+    color:#aaa;
+  }
+
   @media(max-width:400px){
     h1{font-size:1.5rem;}
-    .package-buttons button{font-size:1rem;padding:20px 10px;}
+    .package button{font-size:1rem;padding:20px 10px;}
   }
 </style>
 </head>
@@ -60,20 +89,23 @@
 <h1>Choose a Package</h1>
 
 <div class="package-buttons">
-  <button id="tiktokBtn">TikTok Promotional Video</button>
-  <button id="socialBtn">Social Media Management</button>
+
+  <div class="package">
+    <button id="tiktokBtn" class="active">TikTok Promotional Video</button>
+  </div>
+
+  <div class="package">
+    <button class="disabled">Social Media Management</button>
+    <div class="coming">coming soon</div>
+  </div>
+
 </div>
 
 <script>
   const tiktokBtn = document.getElementById('tiktokBtn');
-  const socialBtn = document.getElementById('socialBtn');
 
   tiktokBtn.addEventListener('click', ()=>{
     window.location.href = "tiktok-promo-details.html";
-  });
-
-  socialBtn.addEventListener('click', ()=>{
-    window.location.href = "social-media-management.html";
   });
 </script>
 
