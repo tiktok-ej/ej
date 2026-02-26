@@ -6,54 +6,104 @@
 <title>Social Media Management</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-  html,body{height:100%;background: linear-gradient(135deg, #00264d, #990000);display:flex;justify-content:center;align-items:center;color:#fff;overflow:hidden;}
-  
-  .coming-soon-container{
-    text-align:center;
-    animation: fadeIn 1.5s ease forwards;
+  html,body{height:100%;overflow-x:hidden;scroll-behavior:smooth;background: linear-gradient(to right, #00264d, #990000);color:#fff;}
+
+  body{display:flex;flex-direction:column;align-items:center;padding:20px;}
+
+  h1{text-align:center;margin:20px 0;font-size:2rem;text-shadow:0 0 15px #fff,0 0 30px #fff,0 0 45px #fff;}
+
+  .profile-row{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:15px;
   }
 
-  .coming-soon {
-    font-size:2rem;
+  .profile-pic{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #fff;
+  }
+
+  .handle{
+    font-size:1.2rem;
     font-weight:bold;
-    color: #fff;
-    position:relative;
-    display:inline-block;
-    animation: glow 2s infinite alternate;
+    text-shadow:0 0 10px #fff,0 0 20px #fff;
   }
 
-  .dots span{
-    display:inline-block;
-    font-size:2rem;
-    animation: bounce 1.5s infinite;
-    margin-left:5px;
+  .description{
+    width:100%;
+    max-width:700px;
+    text-align:center;
+    margin-bottom:30px;
+    font-size:1rem;
+    line-height:1.6;
   }
 
-  .dots span:nth-child(2){animation-delay:0.3s;}
-  .dots span:nth-child(3){animation-delay:0.6s;}
-
-  @keyframes glow{
-    0%{text-shadow:0 0 5px #fff, 0 0 10px #fff;}
-    50%{text-shadow:0 0 20px #fff, 0 0 30px #ff0000;}
-    100%{text-shadow:0 0 5px #fff, 0 0 10px #fff;}
+  .pricing{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    width:100%;
+    max-width:400px;
+    margin-bottom:40px;
   }
 
-  @keyframes bounce{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-10px);}
+  .price-card{
+    background: rgba(0,0,0,0.6);
+    border-radius:25px;
+    padding:20px;
+    text-align:center;
   }
 
-  @keyframes fadeIn{
-    0%{opacity:0;}
-    100%{opacity:1;}
+  .price-card h2{
+    margin-bottom:10px;
+    font-size:1.3rem;
+  }
+
+  .price-card p{
+    font-size:1rem;
+  }
+
+  @media(max-width:400px){
+    h1{font-size:1.5rem;}
+    .profile-pic{width:60px;height:60px;}
+    .handle{font-size:1rem;}
+    .price-card h2{font-size:1.1rem;}
+    .price-card p{font-size:0.9rem;}
   }
 </style>
 </head>
 <body>
 
-<div class="coming-soon-container">
-  <div class="coming-soon">Social Media Management</div>
-  <div class="coming-soon">Coming Soon<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>
+<h1>Social Media Management</h1>
+
+<div class="profile-row">
+  <img src="your-social-pic.png" alt="EJ Social Media Manager" class="profile-pic">
+  <span class="handle">@justtt_ej</span>
+</div>
+
+<p class="description">
+I manage and grow social media accounts with proven content strategies.<br>
+From content planning and posting to audience growth and branding,<br>
+I turn pages into active, engaging, and professional platforms.
+</p>
+
+<div class="pricing">
+  <div class="price-card">
+    <h2>Basic Management</h2>
+    <p>Content planning + 3 posts per week — <strong>15,000 Birr / month</strong></p>
+  </div>
+  <div class="price-card">
+    <h2>Standard Management</h2>
+    <p>Content + posting + growth strategy — <strong>25,000 Birr / month</strong></p>
+  </div>
+  <div class="price-card">
+    <h2>Full Management</h2>
+    <p>Full account management + daily activity — <strong>40,000 Birr / month</strong></p>
+  </div>
 </div>
 
 </body>
