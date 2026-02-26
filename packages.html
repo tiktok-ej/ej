@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EJ | Packages</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+  html,body{height:100%;overflow-x:hidden;scroll-behavior:smooth;}
+
+  body{
+    background: linear-gradient(to right, #00264d, #990000);
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:30px 20px;
+  }
+
+  h1{text-align:center;margin-bottom:25px;font-size:2rem;text-shadow:0 0 15px #fff,0 0 30px #fff,0 0 45px #fff;}
+
+  .package-buttons{
+    display:flex;
+    flex-direction:column;
+    gap:40px;
+    width:100%;
+    max-width:400px;
+    margin-bottom:30px;
+  }
+
+  .package-buttons button{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+    font-size:1.1rem;
+    font-weight:bold;
+    border:none;
+    border-radius:30px;
+    background:#ff3b3b;
+    color:#fff;
+    box-shadow:0 0 20px rgba(255,59,59,0.7);
+    cursor:pointer;
+    transition: all 0.3s ease;
+  }
+
+  .package-buttons button:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 30px rgba(255,59,59,1);
+  }
+
+  @media(max-width:400px){
+    h1{font-size:1.5rem;}
+    .package-buttons button{font-size:1rem;padding:20px 10px;}
+  }
+</style>
+</head>
+<body>
+
+<h1>Choose a Package</h1>
+
+<div class="package-buttons">
+  <button id="tiktokBtn">TikTok Promotional Video</button>
+  <button id="socialBtn">Social Media Management</button>
+</div>
+
+<script>
+  const tiktokBtn = document.getElementById('tiktokBtn');
+  const socialBtn = document.getElementById('socialBtn');
+
+  tiktokBtn.addEventListener('click', ()=>{
+    window.location.href = "tiktok-promo-details.html";
+  });
+
+  socialBtn.addEventListener('click', ()=>{
+    window.location.href = "social-media-management.html";
+  });
+</script>
+
+</body>
+</html>
