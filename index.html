@@ -3,171 +3,220 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EJ | Home</title>
-
+<title>EJ | About Me</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
-body{background:linear-gradient(to right,#00264d,#990000);color:#fff}
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+  html,body{height:100%;overflow-x:hidden;scroll-behavior:smooth;}
 
-/* LANGUAGE SWITCH */
-.lang-wrap{
-  position:fixed;
-  top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  display:flex;gap:10px;
-  z-index:100;
-  transition:all .6s ease-out;
-}
-.lang-wrap.top{
-  top:10px;left:10px;
-  transform:none;
-}
-.lang-btn{
-  padding:6px 14px;
-  border-radius:20px;
-  background:rgba(0,0,0,.5);
-  cursor:pointer;
-  font-size:.85rem;
-  transition:.25s;
-}
-.lang-btn.active{
-  transform:scale(1.2);
-  background:#ff3b3b;
-}
+  body {
+    background: linear-gradient(to right, #00264d, #990000);
+    color:#fff;
+    animation:bgShift 20s ease-in-out infinite alternate;
+  }
+  @keyframes bgShift{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
 
-/* FADE PAGE */
-.page{
-  opacity:0;
-  animation:fade .6s ease forwards;
-}
-@keyframes fade{to{opacity:1}}
+  .container{
+    max-width:500px;
+    margin:30px auto;
+    padding:30px 20px;
+    background:rgba(0,0,0,0.35);
+    border-radius:20px;
+    box-shadow:0 0 40px rgba(0,0,0,0.7);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position:relative;
+  }
 
-/* CONTAINER */
-.container{
-  max-width:500px;margin:80px auto 30px;
-  padding:30px 20px;
-  background:rgba(0,0,0,.35);
-  border-radius:20px;
-  display:flex;flex-direction:column;align-items:center;
-  position:relative;
-}
+  .profile-pic{
+    width:180px;height:180px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid #fff;
+    margin-bottom:20px;
+    animation:float 4s ease-in-out infinite;
+  }
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
 
-/* PAYMENT */
-.payment-btn{
-  position:absolute;top:10px;right:10px;
-  background:rgba(0,0,0,.6);
-  padding:6px 10px;border-radius:20px;
-  cursor:pointer;font-size:.85rem;
-}
-.payment-btn:before{content:"💰 ";}
+  h1{font-size:2rem;margin-bottom:15px;text-align:center;text-shadow:0 0 15px #fff,0 0 30px #fff,0 0 45px #fff;}
+  p{font-size:1rem;text-align:center;line-height:1.5;margin-bottom:25px;text-shadow:0 0 10px #fff,0 0 20px #fff,0 0 30px #fff;}
 
-.profile-pic{
-  width:180px;height:180px;border-radius:50%;
-  border:5px solid #fff;object-fit:cover;margin-bottom:20px;
-}
+  .socials{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    width:100%;
+    align-items:center;
+    margin-bottom:25px;
+  }
+  .socials a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    color:#fff;
+    font-weight:bold;
+    padding:12px 20px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(5px);
+    transition: all 0.3s ease;
+    width:100%;
+    justify-content:center;
+  }
+  .socials a img{width:24px;height:24px;}
+  .socials a:hover{transform:scale(1.05);background:rgba(255,255,255,0.35);color:#000;}
 
-h1{text-align:center;margin-bottom:15px;text-shadow:0 0 15px #fff}
-p{text-align:center;margin-bottom:25px;text-shadow:0 0 10px #fff}
+  .action-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    width:100%;
+    margin-bottom:20px;
+  }
+  .action-buttons a{
+    padding:12px 0;
+    border-radius:30px;
+    font-weight:bold;
+    text-decoration:none;
+    color:#fff;
+    background: rgba(0,0,0,0.7);
+    box-shadow:0 0 15px rgba(255,255,255,0.4);
+    flex:1 1 45%;
+    text-align:center;
+    transition: all 0.3s ease;
+  }
+  .action-buttons a:hover{transform: scale(1.05);background:rgba(0,0,0,0.9);}
 
-.socials{display:flex;flex-direction:column;gap:12px;width:100%;margin-bottom:25px}
-.socials a{
-  display:flex;gap:10px;align-items:center;
-  background:rgba(255,255,255,.15);
-  padding:10px 16px;border-radius:20px;
-  text-decoration:none;color:#fff;font-weight:bold;
-  justify-content:center;
-}
-.socials img{width:22px}
+  .packages-button{
+    padding:15px 0;
+    border-radius:35px;
+    font-weight:bold;
+    text-decoration:none;
+    color:#fff;
+    background: #ff3b3b;
+    width:100%;
+    text-align:center;
+    font-size:1.2rem;
+    box-shadow:0 0 20px rgba(255,59,59,0.7);
+    transition: all 0.3s ease;
+    animation:float 3s ease-in-out infinite;
+  }
+  .packages-button:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 30px rgba(255,59,59,1);
+  }
 
-.action-buttons{display:flex;gap:10px;width:100%;margin-bottom:18px}
-.action-buttons a{
-  flex:1;text-align:center;padding:10px 0;
-  border-radius:20px;background:rgba(0,0,0,.7);
-  text-decoration:none;color:#fff;font-weight:bold;
-}
+  /* Language selector top-left */
+  .lang-switch{
+    position:fixed;
+    top:15px;
+    left:15px;
+    display:flex;
+    gap:6px;
+    z-index:999;
+    transition: all 0.5s ease;
+    opacity:1;
+    transform:scale(0.5);
+  }
 
-.packages{
-  width:100%;text-align:center;
-  padding:14px 0;border-radius:30px;
-  background:#ff3b3b;
-  color:#fff;font-weight:bold;
-  text-decoration:none;
-  animation:float 2.5s ease-in-out infinite;
-}
-@keyframes float{50%{transform:translateY(-8px)}}
+  .lang-btn{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(6px);
+    border-radius:12px;
+    padding:4px 8px;
+    font-size:0.7rem;
+    cursor:pointer;
+    transition:all 0.3s ease;
+  }
+
+  .lang-btn.active{
+    transform:scale(0.6);
+    background:rgba(255,255,255,0.35);
+    color:#000;
+  }
+
+  @media(max-width:400px){
+    h1{font-size:1.5rem;}
+    p{font-size:0.95rem;}
+    .profile-pic{width:140px;height:140px;}
+    .action-buttons a{flex:1 1 100%;}
+  }
 </style>
 </head>
-
 <body>
 
-<!-- LANGUAGE -->
-<div class="lang-wrap" id="langWrap">
-  <div class="lang-btn" id="amBtn">አማርኛ</div>
-  <div class="lang-btn" id="enBtn">English</div>
+<div class="lang-switch">
+  <div class="lang-btn active" onclick="setLang('en')">English</div>
+  <div class="lang-btn" onclick="setLang('am')">አማርኛ</div>
 </div>
 
-<div class="page">
 <div class="container">
+  <img src="your-picture.jpg" alt="EJ Picture" class="profile-pic">
+  <h1 data-en="Hi, I'm EJ!" data-am="ሰላም! እኔ EJ ነኝ።">Hi, I'm EJ!</h1>
+  <p data-en="I'm a TikTok content creator & Social Media Manager. I make content, grow accounts, and create vibes that hit. Welcome to my world of creativity."
+     data-am="እኔ የቲክቶክ ይዘት ፈጣሪ እና ሶሻል ሚዲያ ማኔጅር ነኝ። ይዘት እፈጥራለሁ፣ አካውንቶችን እዘምናለሁ፣ እና ቪብስ እፈጥራለሁ። ወደ ፈጠራ ዓለሜ እንኳን በደህና መጡ።">
+    I'm a TikTok content creator & Social Media Manager. I make content, grow accounts, and create vibes that hit. Welcome to my world of creativity.
+  </p>
 
-<div class="payment-btn" id="payText">Payment</div>
+  <div class="socials">
+    <a href="https://www.tiktok.com/@justtt_ej" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046128.png"> TikTok 1: @justtt_ej</a>
+    <a href="https://www.tiktok.com/@nottt_ej" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046128.png"> TikTok 2: @nottt_ej</a>
+    <a href="https://www.instagram.com/justtt_ej" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"> Instagram: @justtt_ej</a>
+    <a href="https://t.me/justtt_ej" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"> Telegram: @justtt_ej</a>
+    <a href="https://www.youtube.com/@ej_vlogs1" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"> YouTube: ej_vlogs1</a>
+  </div>
 
-<img src="your-picture.jpg" class="profile-pic">
+  <div class="action-buttons">
+    <a href="tel:+251923406940">Call 📞</a>
+    <a href="sms:+251923406940">Text 💬</a>
+  </div>
 
-<h1 id="title">Hi, I'm EJ!</h1>
-<p id="desc">I'm a TikTok content creator & Social Media Manager. I make content, grow accounts, and create vibes that hit. Welcome to my world of creativity.</p>
-
-<div class="socials">
-<a href="https://www.tiktok.com/@justtt_ej"><img src="tiktok.png">TikTok 1</a>
-<a href="https://www.tiktok.com/@nottt_ej"><img src="tiktok.png">TikTok 2</a>
-<a href="https://instagram.com/justtt_ej"><img src="instagram.png">Instagram</a>
-<a href="https://t.me/justtt_ej"><img src="telegram.png">Telegram</a>
-<a href="https://youtube.com/@ej_vlogs1"><img src="youtube.png">YouTube</a>
-</div>
-
-<div class="action-buttons">
-<a href="tel:+251923406940" id="callBtn">Call</a>
-<a href="sms:+251923406940" id="smsBtn">Text</a>
-</div>
-
-<a href="packages.html" class="packages" id="packBtn">Packages</a>
-
-</div>
+  <a href="packages.html" class="packages-button">Packages 🎁</a>
 </div>
 
 <script>
-const amBtn=document.getElementById("amBtn");
-const enBtn=document.getElementById("enBtn");
-const wrap=document.getElementById("langWrap");
+let lastScroll = 0;
+let timeout;
 
-function applyLang(lang){
-wrap.classList.add("top");
-localStorage.setItem("lang",lang);
-
-amBtn.classList.toggle("active",lang==="am");
-enBtn.classList.toggle("active",lang==="en");
-
-if(lang==="am"){
-title.innerText="ሰላም፣ እኔ EJ ነኝ!";
-desc.innerText="እኔ የTikTok ይዘት ፈጣሪ እና ሶሻል ሚዲያ ማኔጀር ነኝ። ይዘት እፈጥራለሁ፣ አካውንቶችን እያሳደግኩ እና የሚመች ቫይብ እፈጥራለሁ።";
-payText.innerText="ክፍያ";
-callBtn.innerText="ደውል";
-smsBtn.innerText="መልዕክት";
-packBtn.innerText="ፓኬጆች";
-}else{
-title.innerText="Hi, I'm EJ!";
-desc.innerText="I'm a TikTok content creator & Social Media Manager. I make content, grow accounts, and create vibes that hit. Welcome to my world of creativity.";
-payText.innerText="Payment";
-callBtn.innerText="Call";
-smsBtn.innerText="Text";
-packBtn.innerText="Packages";
+// Language functions
+function setLang(lang){
+  document.querySelectorAll("[data-en]").forEach(el=>{
+    el.innerHTML = el.getAttribute("data-"+lang);
+  });
+  document.querySelectorAll(".lang-btn").forEach(b=>b.classList.remove("active"));
+  if(lang==="en") document.querySelectorAll(".lang-btn")[0].classList.add("active");
+  else document.querySelectorAll(".lang-btn")[1].classList.add("active");
+  localStorage.setItem("lang",lang);
 }
-}
+const savedLang = localStorage.getItem("lang") || "en";
+setLang(savedLang);
 
-amBtn.onclick=()=>applyLang("am");
-enBtn.onclick=()=>applyLang("en");
+// Fade language on scroll and idle
+const langSwitch = document.querySelector('.lang-switch');
 
-const saved=localStorage.getItem("lang");
-if(saved) applyLang(saved);
+function showLang(){langSwitch.style.opacity='1';}
+function hideLang(){langSwitch.style.opacity='0';}
+
+window.addEventListener('scroll', ()=>{
+  const currentScroll = window.pageYOffset;
+  if(currentScroll>lastScroll){ // scrolling down
+    hideLang();
+  } else { // scrolling up
+    showLang();
+  }
+  lastScroll = currentScroll;
+  clearTimeout(timeout);
+  timeout=setTimeout(hideLang,2000); // fade out after 2s of no scroll
+});
+
+window.addEventListener('touchstart', ()=>{showLang(); clearTimeout(timeout); timeout=setTimeout(hideLang,2000);});
+window.addEventListener('mousemove', ()=>{showLang(); clearTimeout(timeout); timeout=setTimeout(hideLang,2000);});
 </script>
 
 </body>
