@@ -7,107 +7,20 @@
 <style>
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
   html,body{height:100%;overflow-x:hidden;scroll-behavior:smooth;background: linear-gradient(to right, #00264d, #990000);color:#fff;}
-
   body{display:flex;flex-direction:column;align-items:center;padding:20px;opacity:0;animation:fadeIn 0.6s ease forwards;}
-
   @keyframes fadeIn{to{opacity:1}}
 
-  /* LANGUAGE SWITCH */
-  .lang-switch{
-    position:fixed;
-    top:15px;
-    left:15px;
-    display:flex;
-    gap:6px;
-    z-index:999;
-  }
-  .lang-btn{
-    background:rgba(255,255,255,0.15);
-    backdrop-filter:blur(6px);
-    border-radius:12px;
-    padding:6px 10px;
-    font-size:0.8rem;
-    cursor:pointer;
-    transition:all 0.3s ease;
-  }
-  .lang-btn.active{
-    transform:scale(1.2);
-    background:rgba(255,255,255,0.35);
-    color:#000;
-  }
-
   h1{text-align:center;margin:20px 0;font-size:2rem;text-shadow:0 0 15px #fff,0 0 30px #fff,0 0 45px #fff;}
-
-  .profile-row{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    margin-bottom:15px;
-  }
-
-  .profile-pic{
-    width:80px;
-    height:80px;
-    border-radius:50%;
-    object-fit:cover;
-    border:3px solid #fff;
-  }
-
-  .handle{
-    font-size:1.2rem;
-    font-weight:bold;
-    text-shadow:0 0 10px #fff,0 0 20px #fff;
-  }
-
-  .description{
-    width:100%;
-    max-width:700px;
-    text-align:center;
-    margin-bottom:20px;
-    font-size:1rem;
-    line-height:1.6;
-  }
-
-  .video-container{
-    width:100%;
-    display:flex;
-    justify-content:center;
-    margin-bottom:30px;
-  }
-
-  .video-container video{
-    width:80%;
-    max-width:300px;
-    aspect-ratio:3/4;
-    object-fit:cover;
-    border-radius:20px;
-  }
-
-  .pricing{
-    display:flex;
-    flex-direction:column;
-    gap:20px;
-    width:100%;
-    max-width:400px;
-    margin-bottom:40px;
-  }
-
-  .price-card{
-    background: rgba(0,0,0,0.6);
-    border-radius:25px;
-    padding:20px;
-    text-align:center;
-  }
-
-  .price-card h2{
-    margin-bottom:10px;
-    font-size:1.3rem;
-  }
-
-  .price-card p{
-    font-size:1rem;
-  }
-
+  .profile-row{display:flex;align-items:center;gap:15px;margin-bottom:15px;}
+  .profile-pic{width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid #fff;}
+  .handle{font-size:1.2rem;font-weight:bold;text-shadow:0 0 10px #fff,0 0 20px #fff;}
+  .description{width:100%;max-width:700px;text-align:center;margin-bottom:20px;font-size:1rem;line-height:1.6;}
+  .video-container{width:100%;display:flex;justify-content:center;margin-bottom:30px;}
+  .video-container video{width:80%;max-width:300px;aspect-ratio:3/4;object-fit:cover;border-radius:20px;}
+  .pricing{display:flex;flex-direction:column;gap:20px;width:100%;max-width:400px;margin-bottom:40px;}
+  .price-card{background: rgba(0,0,0,0.6);border-radius:25px;padding:20px;text-align:center;}
+  .price-card h2{margin-bottom:10px;font-size:1.3rem;}
+  .price-card p{font-size:1rem;}
   @media(max-width:400px){
     h1{font-size:1.5rem;}
     .profile-pic{width:60px;height:60px;}
@@ -118,12 +31,6 @@
 </style>
 </head>
 <body>
-
-<!-- LANGUAGE -->
-<div class="lang-switch">
-  <div class="lang-btn active" onclick="setLang('en')">English</div>
-  <div class="lang-btn" onclick="setLang('am')">አማርኛ</div>
-</div>
 
 <h1 data-en="TikTok Promotional Video" data-am="የቲክቶክ ማስታወቂያ ቪዲዮ">TikTok Promotional Video</h1>
 
@@ -174,23 +81,10 @@ visual effects, and high engagement content.
 </div>
 
 <script>
-function setLang(lang){
-  document.querySelectorAll("[data-en]").forEach(el=>{
-    el.innerHTML = el.getAttribute("data-"+lang);
-  });
-
-  document.querySelectorAll(".lang-btn").forEach(b=>b.classList.remove("active"));
-  if(lang==="en"){
-    document.querySelectorAll(".lang-btn")[0].classList.add("active");
-  }else{
-    document.querySelectorAll(".lang-btn")[1].classList.add("active");
-  }
-
-  localStorage.setItem("lang",lang);
-}
-
 const savedLang = localStorage.getItem("lang") || "en";
-setLang(savedLang);
+document.querySelectorAll("[data-en]").forEach(el=>{
+    el.innerHTML = el.getAttribute("data-" + savedLang);
+});
 </script>
 
 </body>
