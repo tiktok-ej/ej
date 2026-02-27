@@ -3,110 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EJ | Packages</title>
+<title>Packages</title>
+
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-  html,body{height:100%;overflow-x:hidden;scroll-behavior:smooth;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
+body{background:linear-gradient(to right,#00264d,#990000);color:#fff}
 
-  body{
-    background: linear-gradient(to right, #00264d, #990000);
-    color:#fff;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    padding:30px 20px;
-  }
+.lang-wrap{position:fixed;top:10px;left:10px;display:flex;gap:8px}
+@media(max-width:600px){.lang-wrap{left:auto;right:10px}}
 
-  h1{
-    text-align:center;
-    margin-bottom:25px;
-    font-size:2rem;
-    text-shadow:0 0 15px #fff,0 0 30px #fff,0 0 45px #fff;
-  }
+.lang-btn{padding:6px 14px;border-radius:20px;background:rgba(0,0,0,.5);cursor:pointer;font-size:.8rem}
+.lang-btn.active{transform:scale(1.2);background:#ff3b3b}
 
-  .package-buttons{
-    display:flex;
-    flex-direction:column;
-    gap:40px;
-    width:100%;
-    max-width:400px;
-    margin-bottom:30px;
-  }
+.page{opacity:0;animation:fade .6s ease forwards}
+@keyframes fade{to{opacity:1}}
 
-  .package{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:5px;
-  }
+.container{max-width:400px;margin:80px auto;display:flex;flex-direction:column;gap:20px}
 
-  .package button{
-    width:100%;
-    padding:15px;
-    font-size:1.1rem;
-    font-weight:bold;
-    border:none;
-    border-radius:30px;
-    color:#fff;
-    cursor:pointer;
-    transition: all 0.3s ease;
-  }
-
-  /* Active button */
-  .active{
-    background:#ff3b3b;
-    box-shadow:0 0 20px rgba(255,59,59,0.7);
-  }
-
-  .active:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 30px rgba(255,59,59,1);
-  }
-
-  /* Disabled button */
-  .disabled{
-    background:#555;
-    color:#ccc;
-    cursor:default;
-    box-shadow:none;
-  }
-
-  .coming{
-    font-size:0.6rem;
-    font-weight:300;
-    letter-spacing:1px;
-    color:#aaa;
-  }
-
-  @media(max-width:400px){
-    h1{font-size:1.5rem;}
-    .package button{font-size:1rem;padding:20px 10px;}
-  }
+.btn{padding:16px;border-radius:30px;background:#ff3b3b;color:#fff;text-align:center;font-weight:bold;text-decoration:none}
+.btn.gray{background:#777}
+.small{font-size:.65rem;opacity:.8}
 </style>
 </head>
+
 <body>
 
-<h1>Choose a Package</h1>
+<div class="lang-wrap">
+<div class="lang-btn" id="amBtn">አማርኛ</div>
+<div class="lang-btn" id="enBtn">English</div>
+</div>
 
-<div class="package-buttons">
+<div class="page">
+<div class="container">
 
-  <div class="package">
-    <button id="tiktokBtn" class="active">TikTok Promotional Video</button>
-  </div>
+<a href="tiktok-promo-details.html" class="btn" id="ttBtn">TikTok Promotion</a>
 
-  <div class="package">
-    <button class="disabled">Social Media Management</button>
-    <div class="coming">coming soon</div>
-  </div>
+<div class="btn gray">
+<div id="smBtn">Social Media Management</div>
+<div class="small" id="soon">coming soon</div>
+</div>
 
+</div>
 </div>
 
 <script>
-  const tiktokBtn = document.getElementById('tiktokBtn');
+const amBtn=document.getElementById("amBtn");
+const enBtn=document.getElementById("enBtn");
 
-  tiktokBtn.addEventListener('click', ()=>{
-    window.location.href = "tiktok-promo-details.html";
-  });
+function setLang(l){
+localStorage.setItem("lang",l);
+amBtn.classList.toggle("active",l==="am");
+enBtn.classList.toggle("active",l==="en");
+
+if(l==="am"){
+ttBtn.innerText="የTikTok ፕሮሞሽን";
+smBtn.innerText="ሶሻል ሚዲያ ማኔጅመንት";
+soon.innerText="በቅርቡ";
+}else{
+ttBtn.innerText="TikTok Promotion";
+smBtn.innerText="Social Media Management";
+soon.innerText="coming soon";
+}
+}
+
+amBtn.onclick=()=>setLang("am");
+enBtn.onclick=()=>setLang("en");
+
+setLang(localStorage.getItem("lang")||"en");
 </script>
 
 </body>
