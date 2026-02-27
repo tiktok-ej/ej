@@ -11,23 +11,27 @@ body{background:linear-gradient(to right,#00264d,#990000);color:#fff}
 
 /* LANGUAGE SWITCH */
 .lang-wrap{
-  position:absolute; /* changed from fixed to absolute */
-  top:10px; /* stays at top-left of container */
+  position:absolute; /* was fixed */
+  top:10px;
   left:10px;
-  display:flex;gap:10px;
+  display:flex;gap:8px; /* smaller gap */
   z-index:100;
   transition:all .6s ease-out;
+  opacity:0.8; /* translucent */
+}
+.lang-wrap.top{
+  transform:none;
 }
 .lang-btn{
-  padding:6px 14px;
-  border-radius:20px;
+  padding:4px 10px; /* smaller */
+  border-radius:16px;
   background:rgba(0,0,0,.5);
   cursor:pointer;
-  font-size:.85rem;
+  font-size:.75rem; /* smaller font */
   transition:.25s;
 }
 .lang-btn.active{
-  transform:scale(1.2);
+  transform:scale(1.1); /* slightly bigger when active */
   background:#ff3b3b;
 }
 
@@ -97,13 +101,13 @@ p{text-align:center;margin-bottom:25px;text-shadow:0 0 10px #fff}
 <body>
 
 <!-- LANGUAGE -->
-<div class="page">
-<div class="container">
-
 <div class="lang-wrap" id="langWrap">
   <div class="lang-btn" id="amBtn">አማርኛ</div>
   <div class="lang-btn" id="enBtn">English</div>
 </div>
+
+<div class="page">
+<div class="container">
 
 <div class="payment-btn" id="payText">Payment</div>
 
@@ -136,27 +140,27 @@ const enBtn=document.getElementById("enBtn");
 const wrap=document.getElementById("langWrap");
 
 function applyLang(lang){
-  wrap.classList.add("top");
-  localStorage.setItem("lang",lang);
+wrap.classList.add("top");
+localStorage.setItem("lang",lang);
 
-  amBtn.classList.toggle("active",lang==="am");
-  enBtn.classList.toggle("active",lang==="en");
+amBtn.classList.toggle("active",lang==="am");
+enBtn.classList.toggle("active",lang==="en");
 
-  if(lang==="am"){
-    title.innerText="ሰላም፣ እኔ EJ ነኝ!";
-    desc.innerText="እኔ የTikTok ይዘት ፈጣሪ እና ሶሻል ሚዲያ ማኔጀር ነኝ። ይዘት እፈጥራለሁ፣ አካውንቶችን እያሳደግኩ እና የሚመች ቫይብ እፈጥራለሁ።";
-    payText.innerText="ክፍያ";
-    callBtn.innerText="ደውል";
-    smsBtn.innerText="መልዕክት";
-    packBtn.innerText="ፓኬጆች";
-  }else{
-    title.innerText="Hi, I'm EJ!";
-    desc.innerText="I'm a TikTok content creator & Social Media Manager. I make content, grow accounts, and create vibes that hit. Welcome to my world of creativity.";
-    payText.innerText="Payment";
-    callBtn.innerText="Call";
-    smsBtn.innerText="Text";
-    packBtn.innerText="Packages";
-  }
+if(lang==="am"){
+title.innerText="ሰላም፣ እኔ EJ ነኝ!";
+desc.innerText="እኔ Tiktok ላይ የተለያዩ አይነት Videoዎችን እሰራለሁ፣ Social Media Managerም ነኝ ፣ ይዘት(content) እፈጥራለሁ፣ አካውንቶችን አሳድጋለሁ።";
+payText.innerText="ክፍያ";
+callBtn.innerText="ለመደወል";
+smsBtn.innerText="አጭር የፅሁፍ መልዕክት ለመላክ";
+packBtn.innerText="ፓኬጆች";
+}else{
+title.innerText="Hi, I'm EJ!";
+desc.innerText="I'm a TikTok content creator & Social Media Manager. I make content, grow accounts, and create vibes that hit. Welcome to my world of creativity.";
+payText.innerText="Payment";
+callBtn.innerText="Call";
+smsBtn.innerText="Text";
+packBtn.innerText="Packages";
+}
 }
 
 amBtn.onclick=()=>applyLang("am");
