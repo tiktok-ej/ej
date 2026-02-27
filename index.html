@@ -5,9 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EJ | About Me</title>
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+  *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Arial,sans-serif;}
   html,body{height:100%;overflow-x:hidden;scroll-behavior:smooth;}
-
   body {
     background: linear-gradient(to right, #00264d, #990000);
     color:#fff;
@@ -29,7 +28,26 @@
     display:flex;
     flex-direction:column;
     align-items:center;
-    position:relative;
+  }
+
+  .lang-switch{
+    display:flex;
+    gap:5px;
+    margin-bottom:15px;
+    font-size:0.75rem;
+  }
+  .lang-btn{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(5px);
+    border-radius:10px;
+    padding:4px 8px;
+    cursor:pointer;
+    transition: all 0.3s ease;
+  }
+  .lang-btn.active{
+    transform:scale(1.3);
+    background:rgba(255,255,255,0.35);
+    color:#000;
   }
 
   .profile-pic{
@@ -105,41 +123,13 @@
     font-size:1.2rem;
     box-shadow:0 0 20px rgba(255,59,59,0.7);
     transition: all 0.3s ease;
-    animation:float 3s ease-in-out infinite;
+    animation:floatButton 3s ease-in-out infinite;
   }
   .packages-button:hover{
     transform:scale(1.05);
     box-shadow:0 0 30px rgba(255,59,59,1);
   }
-
-  /* Language selector top-left */
-  .lang-switch{
-    position:fixed;
-    top:15px;
-    left:15px;
-    display:flex;
-    gap:6px;
-    z-index:999;
-    transition: all 0.5s ease;
-    opacity:1;
-    transform:scale(0.5);
-  }
-
-  .lang-btn{
-    background:rgba(255,255,255,0.15);
-    backdrop-filter:blur(6px);
-    border-radius:12px;
-    padding:4px 8px;
-    font-size:0.7rem;
-    cursor:pointer;
-    transition:all 0.3s ease;
-  }
-
-  .lang-btn.active{
-    transform:scale(0.6);
-    background:rgba(255,255,255,0.35);
-    color:#000;
-  }
+  @keyframes floatButton{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
   @media(max-width:400px){
     h1{font-size:1.5rem;}
@@ -151,16 +141,16 @@
 </head>
 <body>
 
-<div class="lang-switch">
-  <div class="lang-btn active" onclick="setLang('en')">English</div>
-  <div class="lang-btn" onclick="setLang('am')">አማርኛ</div>
-</div>
-
 <div class="container">
+  <div class="lang-switch" id="langSwitch">
+    <div class="lang-btn" onclick="setLang('en')">English</div>
+    <div class="lang-btn" onclick="setLang('am')">አማርኛ</div>
+  </div>
+
   <img src="your-picture.jpg" alt="EJ Picture" class="profile-pic">
   <h1 data-en="Hi, I'm EJ!" data-am="ሰላም! እኔ EJ ነኝ።">Hi, I'm EJ!</h1>
   <p data-en="I'm a TikTok content creator & Social Media Manager. I make content, grow accounts, and create vibes that hit. Welcome to my world of creativity."
-     data-am="እኔ የቲክቶክ ይዘት ፈጣሪ እና ሶሻል ሚዲያ ማኔጅር ነኝ። ይዘት እፈጥራለሁ፣ አካውንቶችን እዘምናለሁ፣ እና ቪብስ እፈጥራለሁ። ወደ ፈጠራ ዓለሜ እንኳን በደህና መጡ።">
+     data-am="እኔ የቲክቶክ ይዘት ፈጣሪ እና የሶሻል ሚዲያ ማናጀር ነኝ። ይዘት እፈጥራለሁ፣ አካውንቶችን እያደግሁ ምርጥ ቫይብ እፈጥራለሁ። እንኳን ወደ ፈጠራ ዓለሜ በደህና መጡ።">
     I'm a TikTok content creator & Social Media Manager. I make content, grow accounts, and create vibes that hit. Welcome to my world of creativity.
   </p>
 
@@ -181,10 +171,6 @@
 </div>
 
 <script>
-let lastScroll = 0;
-let timeout;
-
-// Language functions
 function setLang(lang){
   document.querySelectorAll("[data-en]").forEach(el=>{
     el.innerHTML = el.getAttribute("data-"+lang);
@@ -196,27 +182,6 @@ function setLang(lang){
 }
 const savedLang = localStorage.getItem("lang") || "en";
 setLang(savedLang);
-
-// Fade language on scroll and idle
-const langSwitch = document.querySelector('.lang-switch');
-
-function showLang(){langSwitch.style.opacity='1';}
-function hideLang(){langSwitch.style.opacity='0';}
-
-window.addEventListener('scroll', ()=>{
-  const currentScroll = window.pageYOffset;
-  if(currentScroll>lastScroll){ // scrolling down
-    hideLang();
-  } else { // scrolling up
-    showLang();
-  }
-  lastScroll = currentScroll;
-  clearTimeout(timeout);
-  timeout=setTimeout(hideLang,2000); // fade out after 2s of no scroll
-});
-
-window.addEventListener('touchstart', ()=>{showLang(); clearTimeout(timeout); timeout=setTimeout(hideLang,2000);});
-window.addEventListener('mousemove', ()=>{showLang(); clearTimeout(timeout); timeout=setTimeout(hideLang,2000);});
 </script>
 
 </body>
