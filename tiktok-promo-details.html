@@ -8,7 +8,33 @@
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
   html,body{height:100%;overflow-x:hidden;scroll-behavior:smooth;background: linear-gradient(to right, #00264d, #990000);color:#fff;}
 
-  body{display:flex;flex-direction:column;align-items:center;padding:20px;}
+  body{display:flex;flex-direction:column;align-items:center;padding:20px;opacity:0;animation:fadeIn 0.6s ease forwards;}
+
+  @keyframes fadeIn{to{opacity:1}}
+
+  /* LANGUAGE SWITCH */
+  .lang-switch{
+    position:fixed;
+    top:15px;
+    left:15px;
+    display:flex;
+    gap:6px;
+    z-index:999;
+  }
+  .lang-btn{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(6px);
+    border-radius:12px;
+    padding:6px 10px;
+    font-size:0.8rem;
+    cursor:pointer;
+    transition:all 0.3s ease;
+  }
+  .lang-btn.active{
+    transform:scale(1.2);
+    background:rgba(255,255,255,0.35);
+    color:#000;
+  }
 
   h1{text-align:center;margin:20px 0;font-size:2rem;text-shadow:0 0 15px #fff,0 0 30px #fff,0 0 45px #fff;}
 
@@ -93,14 +119,22 @@
 </head>
 <body>
 
-<h1>TikTok Promotional Video</h1>
+<!-- LANGUAGE -->
+<div class="lang-switch">
+  <div class="lang-btn active" onclick="setLang('en')">English</div>
+  <div class="lang-btn" onclick="setLang('am')">አማርኛ</div>
+</div>
+
+<h1 data-en="TikTok Promotional Video" data-am="የቲክቶክ ማስታወቂያ ቪዲዮ">TikTok Promotional Video</h1>
 
 <div class="profile-row">
   <img src="your-tiktok-promo-pic.png" alt="EJ TikTok Promo Picture" class="profile-pic">
   <span class="handle">@justtt_ej</span>
 </div>
 
-<p class="description">
+<p class="description"
+data-en="This is an account with more than <strong>350k followers</strong><br>that gets millions or hundreds of thousands of views.<br>The content is entertaining and gets peoples attention, full of skits,<br>visual effects, and high engagement content."
+data-am="ይህ ከ<strong>350k በላይ ተከታዮች</strong> ያለው አካውንት ነው።<br>ሚሊዮኖች ወይም መቶ ሺዎች እይታ ያገኛል።<br>ኮንተንቱ አዝናኝ እና የሰዎችን ትኩረት የሚስብ ነው፣ ስኪቶች፣<br>ቪዥዋል ኢፌክቶች እና ከፍተኛ ተወዳጅነት እያገኘ ቆይቷል።">
 This is an account with more than <strong>350k followers</strong><br>
 that gets millions or hundreds of thousands of views.<br>
 The content is entertaining, full of skits,<br>
@@ -110,24 +144,54 @@ visual effects, and high engagement content.
 <div class="video-container">
   <video autoplay loop muted playsinline>
     <source src="your-tiktok-sample-video.mp4" type="video/mp4">
-    Your browser does not support the video tag.
   </video>
 </div>
 
 <div class="pricing">
   <div class="price-card">
-    <h2>Basic Package</h2>
-    <p>1 simple 20–30s TikTok skit — <strong>12,000 Birr</strong></p>
+    <h2 data-en="Basic Package" data-am="መደበኛ ፓኬጅ">Basic Package</h2>
+    <p data-en="1 simple 20–30s TikTok skit promo — <strong>12,000 Birr</strong>"
+       data-am="1 ቀላል 20–30 ሰከንድ የቲክቶክ ጭውውት የታጀበ ማስታወቂያ — <strong>12,000 ብር</strong>">
+       1 simple 20–30s TikTok skit — <strong>12,000 Birr</strong>
+    </p>
   </div>
+
   <div class="price-card">
-    <h2>Standard Package</h2>
-    <p>1 skit with visual effects + Instagram post & story — <strong>17,000 Birr</strong></p>
+    <h2 data-en="Standard Package" data-am="ስታንዳርድ ፓኬጅ">Standard Package</h2>
+    <p data-en="1 skit with visual effects + Instagram post & story — <strong>17,000 Birr</strong>"
+       data-am="1 አዝናኝ ቪድዮ ከቪዥዋል ኢፌክት ኤዲቶች ጋር + ኢንስታግራም ላይ ፖስት እና ስቶሪ — <strong>17,000 ብር</strong>">
+       1 skit with visual effects + Instagram post & story — <strong>17,000 Birr</strong>
+    </p>
   </div>
+
   <div class="price-card">
-    <h2>Premium Package</h2>
-    <p>2 funny, engaging short movies with VFX + posts & stories on all my socials — <strong>31,000 Birr</strong></p>
+    <h2 data-en="Premium Package" data-am="ፕሪሚየም ፓኬጅ">Premium Package</h2>
+    <p data-en="2 funny, engaging short movies with VFX + posts & stories on all my socials — <strong>31,000 Birr</strong>"
+       data-am="2 አስቂኝ እና አጓጊ አጭር ፊልሞች ከVFX ጋር + በሁሉም ሶሻል ሚዲያዬ ፖስት እና እስቶሪ — <strong>31,000 ብር</strong>">
+       2 funny, engaging short movies with VFX + posts & stories on all my socials — <strong>31,000 Birr</strong>
+    </p>
   </div>
 </div>
+
+<script>
+function setLang(lang){
+  document.querySelectorAll("[data-en]").forEach(el=>{
+    el.innerHTML = el.getAttribute("data-"+lang);
+  });
+
+  document.querySelectorAll(".lang-btn").forEach(b=>b.classList.remove("active"));
+  if(lang==="en"){
+    document.querySelectorAll(".lang-btn")[0].classList.add("active");
+  }else{
+    document.querySelectorAll(".lang-btn")[1].classList.add("active");
+  }
+
+  localStorage.setItem("lang",lang);
+}
+
+const savedLang = localStorage.getItem("lang") || "en";
+setLang(savedLang);
+</script>
 
 </body>
 </html>
