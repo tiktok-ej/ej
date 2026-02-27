@@ -11,35 +11,30 @@ body{background:linear-gradient(to right,#00264d,#990000);color:#fff}
 
 /* LANGUAGE SWITCH */
 .lang-wrap{
-  position:absolute; /* was fixed */
+  position:absolute;
   top:10px;
   left:10px;
-  display:flex;gap:8px; /* smaller gap */
+  display:flex;gap:8px;
   z-index:100;
   transition:all .6s ease-out;
-  opacity:0.8; /* translucent */
+  opacity:0.8;
 }
-.lang-wrap.top{
-  transform:none;
-}
+.lang-wrap.top{transform:none}
 .lang-btn{
-  padding:4px 10px; /* smaller */
+  padding:4px 10px;
   border-radius:16px;
   background:rgba(0,0,0,.5);
   cursor:pointer;
-  font-size:.75rem; /* smaller font */
+  font-size:.75rem;
   transition:.25s;
 }
 .lang-btn.active{
-  transform:scale(1.1); /* slightly bigger when active */
+  transform:scale(1.1);
   background:#ff3b3b;
 }
 
 /* FADE PAGE */
-.page{
-  opacity:0;
-  animation:fade .6s ease forwards;
-}
+.page{opacity:0;animation:fade .6s ease forwards}
 @keyframes fade{to{opacity:1}}
 
 /* CONTAINER */
@@ -50,9 +45,11 @@ body{background:linear-gradient(to right,#00264d,#990000);color:#fff}
   border-radius:20px;
   display:flex;flex-direction:column;align-items:center;
   position:relative;
+  transition:.3s;
 }
+.blur{filter:blur(6px) brightness(.6)}
 
-/* PAYMENT */
+/* PAYMENT BUTTON */
 .payment-btn{
   position:absolute;top:10px;right:10px;
   background:rgba(0,0,0,.6);
@@ -61,6 +58,7 @@ body{background:linear-gradient(to right,#00264d,#990000);color:#fff}
 }
 .payment-btn:before{content:"💰 ";}
 
+/* PROFILE */
 .profile-pic{
   width:180px;height:180px;border-radius:50%;
   border:5px solid #fff;object-fit:cover;margin-bottom:20px;
@@ -69,6 +67,7 @@ body{background:linear-gradient(to right,#00264d,#990000);color:#fff}
 h1{text-align:center;margin-bottom:15px;text-shadow:0 0 15px #fff}
 p{text-align:center;margin-bottom:25px;text-shadow:0 0 10px #fff}
 
+/* SOCIALS */
 .socials{display:flex;flex-direction:column;gap:12px;width:100%;margin-bottom:25px}
 .socials a{
   display:flex;gap:10px;align-items:center;
@@ -95,19 +94,81 @@ p{text-align:center;margin-bottom:25px;text-shadow:0 0 10px #fff}
   animation:float 2.5s ease-in-out infinite;
 }
 @keyframes float{50%{transform:translateY(-8px)}}
+
+/* ===== PAYMENT POPUP ===== */
+.overlay{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.4);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+.popup{
+  width:320px;
+  background:#111;
+  border-radius:18px;
+  padding:22px 18px 20px;
+  position:relative;
+  box-shadow:0 0 30px rgba(0,0,0,.6);
+  text-align:center;
+}
+.close{
+  position:absolute;top:8px;right:10px;
+  cursor:pointer;font-size:18px;
+  opacity:.8;
+}
+.pay-item{
+  margin-top:18px;
+}
+.pay-logo{
+  width:90px;
+  margin-bottom:8px;
+}
+.pay-number{
+  font-size:20px;
+  font-weight:bold;
+  letter-spacing:1px;
+}
+.pay-name{
+  font-size:9px;
+  opacity:.7;
+  margin-top:2px;
+}
+.copy-btn{
+  margin-left:8px;
+  font-size:11px;
+  padding:2px 6px;
+  border-radius:6px;
+  background:#ff3b3b;
+  cursor:pointer;
+}
+.toast{
+  position:fixed;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#000;
+  padding:8px 14px;
+  border-radius:12px;
+  font-size:12px;
+  opacity:0;
+  transition:.3s;
+  z-index:1000;
+}
+.toast.show{opacity:1}
 </style>
 </head>
 
 <body>
 
-<!-- LANGUAGE -->
 <div class="lang-wrap" id="langWrap">
   <div class="lang-btn" id="amBtn">አማርኛ</div>
   <div class="lang-btn" id="enBtn">English</div>
 </div>
 
 <div class="page">
-<div class="container">
+<div class="container" id="mainBox">
 
 <div class="payment-btn" id="payText">Payment</div>
 
@@ -134,10 +195,41 @@ p{text-align:center;margin-bottom:25px;text-shadow:0 0 10px #fff}
 </div>
 </div>
 
+<!-- PAYMENT POPUP -->
+<div class="overlay" id="overlay">
+  <div class="popup">
+    <div class="close" id="closePop">✕</div>
+
+    <div class="pay-item">
+      <img src="cbe.png" class="pay-logo">
+      <div class="pay-number">
+        1000733211796
+        <span class="copy-btn" onclick="copyAcc('1000733211796')">Copy</span>
+      </div>
+      <div class="pay-name">mr Ejunayehu Wendimu</div>
+    </div>
+
+    <div class="pay-item">
+      <img src="telebirr.png" class="pay-logo">
+      <div class="pay-number">
+        0923406940
+        <span class="copy-btn" onclick="copyAcc('0923406940')">Copy</span>
+      </div>
+      <div class="pay-name">Wondimu</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast">Account copied!</div>
+
 <script>
 const amBtn=document.getElementById("amBtn");
 const enBtn=document.getElementById("enBtn");
 const wrap=document.getElementById("langWrap");
+const overlay=document.getElementById("overlay");
+const mainBox=document.getElementById("mainBox");
+const toast=document.getElementById("toast");
 
 function applyLang(lang){
 wrap.classList.add("top");
@@ -148,10 +240,10 @@ enBtn.classList.toggle("active",lang==="en");
 
 if(lang==="am"){
 title.innerText="ሰላም፣ እኔ EJ ነኝ!";
-desc.innerText="እኔ Tiktok ላይ የተለያዩ አይነት Videoዎችን እሰራለሁ፣ Social Media Managerም ነኝ ፣ ይዘት(content) እፈጥራለሁ፣ አካውንቶችን አሳድጋለሁ።";
+desc.innerText="እኔ Tiktok ላይ የተለያዩ አይነት Videoዎችን እሰራለሁ፣ Social Media Managerም ነኝ፣ ይዘት እፈጥራለሁ፣ አካውንቶችን አሳድጋለሁ።";
 payText.innerText="ክፍያ";
 callBtn.innerText="ለመደወል";
-smsBtn.innerText="አጭር የፅሁፍ መልዕክት ለመላክ";
+smsBtn.innerText="መልዕክት";
 packBtn.innerText="ፓኬጆች";
 }else{
 title.innerText="Hi, I'm EJ!";
@@ -168,6 +260,35 @@ enBtn.onclick=()=>applyLang("en");
 
 const saved=localStorage.getItem("lang");
 if(saved) applyLang(saved);
+
+/* OPEN POPUP */
+payText.onclick=()=>{
+overlay.style.display="flex";
+mainBox.classList.add("blur");
+};
+
+/* CLOSE */
+closePop.onclick=()=>{
+overlay.style.display="none";
+mainBox.classList.remove("blur");
+};
+overlay.onclick=(e)=>{
+if(e.target===overlay){
+overlay.style.display="none";
+mainBox.classList.remove("blur");
+}
+};
+
+/* COPY */
+function copyAcc(num){
+navigator.clipboard.writeText(num);
+
+const lang=localStorage.getItem("lang")||"en";
+toast.innerText = lang==="am" ? "አካውንት Copy አድርገዋል!" : "Account copied!";
+toast.classList.add("show");
+
+setTimeout(()=>toast.classList.remove("show"),1800);
+}
 </script>
 
 </body>
