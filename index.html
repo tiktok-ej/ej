@@ -3,293 +3,171 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EJ | About Me</title>
+<title>EJ | Home</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-html,body{height:100%;overflow-x:hidden;scroll-behavior:smooth;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+body{background:linear-gradient(to right,#00264d,#990000);color:#fff}
 
-body{
-  background: linear-gradient(to right, #00264d, #990000);
-  color:#fff;
+/* LANGUAGE SWITCH */
+.lang-wrap{
+  position:fixed;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  display:flex;gap:10px;
+  z-index:100;
+  transition:all .6s ease-out;
 }
-
-/* container */
-.container{
-  max-width:500px;
-  margin:30px auto;
-  padding:30px 20px;
-  background:rgba(0,0,0,0.35);
-  border-radius:20px;
-  box-shadow:0 0 40px rgba(0,0,0,0.7);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  position:relative;
+.lang-wrap.top{
+  top:10px;left:10px;
+  transform:none;
 }
-
-/* payment button */
-.payment-btn{
-  position:absolute;
-  top:10px;
-  right:10px;
-  display:flex;
-  align-items:center;
-  gap:6px;
-  background:rgba(0,0,0,0.6);
-  padding:6px 10px;
+.lang-btn{
+  padding:6px 14px;
   border-radius:20px;
+  background:rgba(0,0,0,.5);
   cursor:pointer;
-  font-size:0.9rem;
+  font-size:.85rem;
+  transition:.25s;
 }
-.payment-btn::before{
-  content: "💰";
-  font-size:1rem;
-}
-.payment-btn span{
-  margin-left:4px;
-}
-
-/* profile */
-.profile-pic{
-  width:180px;height:180px;
-  border-radius:50%;
-  object-fit:cover;
-  border:5px solid #fff;
-  margin-bottom:20px;
-}
-
-h1{font-size:2rem;margin-bottom:15px;text-align:center;text-shadow:0 0 15px #fff,0 0 30px #fff;}
-p{font-size:1rem;text-align:center;line-height:1.5;margin-bottom:25px;text-shadow:0 0 10px #fff;}
-
-/* socials */
-.socials{
-  display:flex;
-  flex-direction:column;
-  gap:15px;
-  width:100%;
-  align-items:center;
-  margin-bottom:25px;
-}
-.socials a{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  text-decoration:none;
-  color:#fff;
-  font-weight:bold;
-  padding:12px 20px;
-  border-radius:25px;
-  background:rgba(255,255,255,0.15);
-  width:100%;
-  justify-content:center;
-}
-.socials a img{width:24px;height:24px}
-
-/* buttons */
-.action-buttons{
-  display:flex;
-  gap:15px;
-  width:100%;
-  margin-bottom:20px;
-}
-.action-buttons a{
-  flex:1;
-  padding:12px 0;
-  border-radius:30px;
-  font-weight:bold;
-  text-decoration:none;
-  color:#fff;
-  background: rgba(0,0,0,0.7);
-  text-align:center;
-}
-
-/* packages button */
-.packages-button{
-  padding:15px 0;
-  border-radius:35px;
-  font-weight:bold;
-  text-decoration:none;
-  color:#fff;
+.lang-btn.active{
+  transform:scale(1.2);
   background:#ff3b3b;
-  width:100%;
-  text-align:center;
-  font-size:1.2rem;
-  box-shadow:0 0 20px rgba(255,59,59,0.8);
-  animation:floatGlow 2.5s ease-in-out infinite alternate;
 }
 
-/* floating glow animation */
-@keyframes floatGlow{
-  0%{transform:translateY(0); box-shadow:0 0 20px rgba(255,59,59,0.8);}
-  50%{transform:translateY(-10px); box-shadow:0 0 35px rgba(255,59,59,1);}
-  100%{transform:translateY(0); box-shadow:0 0 20px rgba(255,59,59,0.8);}
+/* FADE PAGE */
+.page{
+  opacity:0;
+  animation:fade .6s ease forwards;
 }
+@keyframes fade{to{opacity:1}}
 
-/* ===== PAYMENT POPUP ===== */
-.overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.75);
-  backdrop-filter:blur(6px);
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:10;
-}
-
-.popup{
-  width:320px;
+/* CONTAINER */
+.container{
+  max-width:500px;margin:80px auto 30px;
+  padding:30px 20px;
+  background:rgba(0,0,0,.35);
   border-radius:20px;
-  padding:20px;
-  background:#111;
+  display:flex;flex-direction:column;align-items:center;
   position:relative;
 }
 
-.close{
-  position:absolute;
-  right:10px;
-  top:6px;
-  cursor:pointer;
-  font-size:18px;
+/* PAYMENT */
+.payment-btn{
+  position:absolute;top:10px;right:10px;
+  background:rgba(0,0,0,.6);
+  padding:6px 10px;border-radius:20px;
+  cursor:pointer;font-size:.85rem;
+}
+.payment-btn:before{content:"💰 ";}
+
+.profile-pic{
+  width:180px;height:180px;border-radius:50%;
+  border:5px solid #fff;object-fit:cover;margin-bottom:20px;
 }
 
-/* account cards */
-.acc{
-  border-radius:15px;
-  padding:14px;
-  margin-bottom:12px;
-  text-align:center;
-  color:#fff;
+h1{text-align:center;margin-bottom:15px;text-shadow:0 0 15px #fff}
+p{text-align:center;margin-bottom:25px;text-shadow:0 0 10px #fff}
+
+.socials{display:flex;flex-direction:column;gap:12px;width:100%;margin-bottom:25px}
+.socials a{
+  display:flex;gap:10px;align-items:center;
+  background:rgba(255,255,255,.15);
+  padding:10px 16px;border-radius:20px;
+  text-decoration:none;color:#fff;font-weight:bold;
+  justify-content:center;
+}
+.socials img{width:22px}
+
+.action-buttons{display:flex;gap:10px;width:100%;margin-bottom:18px}
+.action-buttons a{
+  flex:1;text-align:center;padding:10px 0;
+  border-radius:20px;background:rgba(0,0,0,.7);
+  text-decoration:none;color:#fff;font-weight:bold;
 }
 
-/* CBE */
-.cbe{
-  background:#4E1380;
-  color:#fff;
+.packages{
+  width:100%;text-align:center;
+  padding:14px 0;border-radius:30px;
+  background:#ff3b3b;
+  color:#fff;font-weight:bold;
+  text-decoration:none;
+  animation:float 2.5s ease-in-out infinite;
 }
-
-/* Telebirr */
-.tele{
-  background:#90D5FF;
-  color:#000;
-}
-
-.acc img{
-  width:70px;
-  margin-bottom:6px;
-}
-
-.num{
-  font-weight:bold;
-  margin:4px 0;
-  font-size:1.05rem;
-}
-
-.holder{
-  font-size:0.6rem;
-  opacity:0.85;
-}
-
-.copy-btn{
-  margin-top:6px;
-  font-size:0.7rem;
-  padding:4px 8px;
-  border-radius:10px;
-  background:rgba(0,0,0,0.4);
-  color:#fff;
-  cursor:pointer;
-}
-
-/* toast */
-.toast{
-  position:fixed;
-  bottom:30px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#000;
-  color:#fff;
-  padding:8px 14px;
-  border-radius:8px;
-  opacity:0;
-  transition:0.3s;
-  z-index:20;
-}
-
-@media(max-width:400px){
-  h1{font-size:1.5rem;}
-  p{font-size:0.95rem;}
-  .profile-pic{width:140px;height:140px;}
-  .action-buttons a{flex:1 1 100%;}
-}
+@keyframes float{50%{transform:translateY(-8px)}}
 </style>
 </head>
 
 <body>
 
+<!-- LANGUAGE -->
+<div class="lang-wrap" id="langWrap">
+  <div class="lang-btn" id="amBtn">አማርኛ</div>
+  <div class="lang-btn" id="enBtn">English</div>
+</div>
+
+<div class="page">
 <div class="container">
 
-  <!-- PAYMENT BUTTON -->
-  <div class="payment-btn" onclick="openPay()"><span>Payment</span></div>
+<div class="payment-btn" id="payText">Payment</div>
 
-  <img src="your-picture.jpg" class="profile-pic">
+<img src="your-picture.jpg" class="profile-pic">
 
-  <h1>Hi, I'm EJ!</h1>
-  <p>I'm a TikTok content creator & Social Media Manager. I make content, grow accounts, and create vibes that hit. Welcome to my world of creativity.</p>
+<h1 id="title">Hi, I'm EJ!</h1>
+<p id="desc">I'm a TikTok content creator & Social Media Manager. I make content, grow accounts, and create vibes that hit. Welcome to my world of creativity.</p>
 
-  <div class="socials">
-    <a href="https://www.tiktok.com/@justtt_ej" target="_blank"><img src="tiktok.png"> TikTok 1: @justtt_ej</a>
-    <a href="https://www.tiktok.com/@nottt_ej" target="_blank"><img src="tiktok.png"> TikTok 2: @nottt_ej</a>
-    <a href="https://www.instagram.com/justtt_ej" target="_blank"><img src="instagram.png"> Instagram</a>
-    <a href="https://t.me/justtt_ej" target="_blank"><img src="telegram.png"> Telegram</a>
-    <a href="https://www.youtube.com/@ej_vlogs1" target="_blank"><img src="youtube.png"> YouTube</a>
-  </div>
-
-  <div class="action-buttons">
-    <a href="tel:+251923406940">Call 📞</a>
-    <a href="sms:+251923406940">Text 💬</a>
-  </div>
-
-  <a href="packages.html" class="packages-button">Packages 🎁</a>
-
+<div class="socials">
+<a href="https://www.tiktok.com/@justtt_ej"><img src="tiktok.png">TikTok 1</a>
+<a href="https://www.tiktok.com/@nottt_ej"><img src="tiktok.png">TikTok 2</a>
+<a href="https://instagram.com/justtt_ej"><img src="instagram.png">Instagram</a>
+<a href="https://t.me/justtt_ej"><img src="telegram.png">Telegram</a>
+<a href="https://youtube.com/@ej_vlogs1"><img src="youtube.png">YouTube</a>
 </div>
 
-<!-- PAYMENT POPUP -->
-<div class="overlay" id="overlay">
-  <div class="popup">
-    <div class="close" onclick="closePay()">✕</div>
-
-    <div class="acc cbe">
-      <img src="cbe.png">
-      <div class="num" id="cbeNum">1000733211796</div>
-      <div class="holder">ejunayehu wendimu</div>
-      <div class="copy-btn" onclick="copyAcc('cbeNum')">Copy</div>
-    </div>
-
-    <div class="acc tele">
-      <img src="telebirr.png">
-      <div class="num" id="teleNum">0923406940</div>
-      <div class="holder">wondimu</div>
-      <div class="copy-btn" onclick="copyAcc('teleNum')">Copy</div>
-    </div>
-
-  </div>
+<div class="action-buttons">
+<a href="tel:+251923406940" id="callBtn">Call</a>
+<a href="sms:+251923406940" id="smsBtn">Text</a>
 </div>
 
-<div class="toast" id="toast">Account copied!</div>
+<a href="packages.html" class="packages" id="packBtn">Packages</a>
+
+</div>
+</div>
 
 <script>
-function openPay(){ document.getElementById("overlay").style.display="flex"; }
-function closePay(){ document.getElementById("overlay").style.display="none"; }
+const amBtn=document.getElementById("amBtn");
+const enBtn=document.getElementById("enBtn");
+const wrap=document.getElementById("langWrap");
 
-function copyAcc(id){
-  const text=document.getElementById(id).innerText;
-  navigator.clipboard.writeText(text);
+function applyLang(lang){
+wrap.classList.add("top");
+localStorage.setItem("lang",lang);
 
-  const toast=document.getElementById("toast");
-  toast.style.opacity=1;
-  setTimeout(()=>toast.style.opacity=0,1800);
+amBtn.classList.toggle("active",lang==="am");
+enBtn.classList.toggle("active",lang==="en");
+
+if(lang==="am"){
+title.innerText="ሰላም፣ እኔ EJ ነኝ!";
+desc.innerText="እኔ የTikTok ይዘት ፈጣሪ እና ሶሻል ሚዲያ ማኔጀር ነኝ። ይዘት እፈጥራለሁ፣ አካውንቶችን እያሳደግኩ እና የሚመች ቫይብ እፈጥራለሁ።";
+payText.innerText="ክፍያ";
+callBtn.innerText="ደውል";
+smsBtn.innerText="መልዕክት";
+packBtn.innerText="ፓኬጆች";
+}else{
+title.innerText="Hi, I'm EJ!";
+desc.innerText="I'm a TikTok content creator & Social Media Manager. I make content, grow accounts, and create vibes that hit. Welcome to my world of creativity.";
+payText.innerText="Payment";
+callBtn.innerText="Call";
+smsBtn.innerText="Text";
+packBtn.innerText="Packages";
 }
+}
+
+amBtn.onclick=()=>applyLang("am");
+enBtn.onclick=()=>applyLang("en");
+
+const saved=localStorage.getItem("lang");
+if(saved) applyLang(saved);
 </script>
 
 </body>
