@@ -9,12 +9,6 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
 body{background:linear-gradient(to right,#00264d,#990000);color:#fff}
 
-.lang-wrap{position:fixed;top:10px;left:10px;display:flex;gap:8px}
-@media(max-width:600px){.lang-wrap{left:auto;right:10px}}
-
-.lang-btn{padding:6px 14px;border-radius:20px;background:rgba(0,0,0,.5);cursor:pointer;font-size:.8rem}
-.lang-btn.active{transform:scale(1.2);background:#ff3b3b}
-
 .page{opacity:0;animation:fade .6s ease forwards}
 @keyframes fade{to{opacity:1}}
 
@@ -27,11 +21,6 @@ body{background:linear-gradient(to right,#00264d,#990000);color:#fff}
 </head>
 
 <body>
-
-<div class="lang-wrap">
-<div class="lang-btn" id="amBtn">አማርኛ</div>
-<div class="lang-btn" id="enBtn">English</div>
-</div>
 
 <div class="page">
 <div class="container">
@@ -47,29 +36,21 @@ body{background:linear-gradient(to right,#00264d,#990000);color:#fff}
 </div>
 
 <script>
-const amBtn=document.getElementById("amBtn");
-const enBtn=document.getElementById("enBtn");
+const ttBtn=document.getElementById("ttBtn");
+const smBtn=document.getElementById("smBtn");
+const soon=document.getElementById("soon");
 
-function setLang(l){
-localStorage.setItem("lang",l);
-amBtn.classList.toggle("active",l==="am");
-enBtn.classList.toggle("active",l==="en");
+const lang = localStorage.getItem("lang") || "en";
 
-if(l==="am"){
-ttBtn.innerText="የTikTok ፕሮሞሽን";
-smBtn.innerText="ሶሻል ሚዲያ ማኔጅመንት";
-soon.innerText="በቅርቡ";
+if(lang==="am"){
+    ttBtn.innerText="የTikTok ማስታወቂያ ለማሰራት";
+    smBtn.innerText="ሶሻል ሚዲያ ማኔጅመንት ለማሰራት";
+    soon.innerText="በቅርቡ";
 }else{
-ttBtn.innerText="TikTok Promotion";
-smBtn.innerText="Social Media Management";
-soon.innerText="coming soon";
+    ttBtn.innerText="TikTok Promotion";
+    smBtn.innerText="Social Media Management";
+    soon.innerText="coming soon";
 }
-}
-
-amBtn.onclick=()=>setLang("am");
-enBtn.onclick=()=>setLang("en");
-
-setLang(localStorage.getItem("lang")||"en");
 </script>
 
 </body>
