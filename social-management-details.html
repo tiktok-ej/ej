@@ -5,154 +5,223 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Social Media Management Packages</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{
-  background: linear-gradient(to right,#00264d,#990000);
-  color:#fff;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding:20px;
-}
-.page{opacity:0;animation:fade .6s ease forwards;}
-@keyframes fade{to{opacity:1}}
-.container{
-  max-width:700px;
-  width:100%;
-  padding:20px;
-  background: rgba(0,0,0,0.35);
-  border-radius:20px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-.profile-pic{
-  width:180px;height:180px;border-radius:50%;
-  object-fit:cover;border:5px solid #fff;margin-bottom:20px;
-}
-h1{text-align:center;margin-bottom:15px;text-shadow:0 0 15px #fff;}
-p.description{text-align:center;margin-bottom:25px;text-shadow:0 0 10px #fff;line-height:1.5;}
-.pricing{display:flex;flex-direction:column;gap:20px;width:100%;}
-.price-card{
-  background: rgba(0,0,0,0.6);
-  border-radius:25px;
-  padding:20px;
-  text-align:center;
-  position:relative;
-}
-.price-card h2{margin-bottom:8px;}
-.price-card p{margin-bottom:8px;}
-.price-card .price{
-  color:#00ff40;
-  font-weight:bold;
-  font-size:1.2rem;
-  animation:float 2s ease-in-out infinite alternate;
-  text-shadow:0 0 10px #0f0,0 0 20px #0f0,0 0 30px #0f0;
-}
-@keyframes float{50%{transform:translateY(-6px)}}
-.example-video{
-  width:90%;max-width:300px;
-  aspect-ratio:3/4;
-  border-radius:15px;
-  margin:8px 0;
-  pointer-events:none;
-}
-.deal-btn{
-  margin-top:5px;
-  padding:8px 15px;
-  border-radius:20px;
-  background:#ff3b3b;
-  color:#fff;
-  font-weight:bold;
-  cursor:pointer;
-  display:none;
-}
+  *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+  body{
+    background: linear-gradient(to right,#00264d,#990000);
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:20px;
+  }
+
+  h1{text-align:center;margin:20px 0;font-size:2rem;text-shadow:0 0 15px #fff;}
+
+  .profile-row{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:15px;
+  }
+
+  .profile-pic{
+    width:80px;height:80px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #fff;
+  }
+
+  .handle{
+    font-size:1.2rem;
+    font-weight:bold;
+    text-shadow:0 0 10px #fff,0 0 20px #fff;
+  }
+
+  .description{
+    width:100%;
+    max-width:700px;
+    text-align:center;
+    margin-bottom:20px;
+    font-size:1rem;
+    line-height:1.6;
+  }
+
+  .packages{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    width:100%;
+    max-width:500px;
+    margin-bottom:40px;
+  }
+
+  .package-card{
+    background: rgba(0,0,0,0.6);
+    border-radius:25px;
+    padding:15px;
+    text-align:center;
+    cursor:pointer;
+    transition: all 0.3s ease;
+    position:relative;
+  }
+
+  .package-card.selected{
+    background:#ff3b3b;
+  }
+
+  .deal-btn{
+    display:none;
+    margin-top:10px;
+    padding:8px 12px;
+    border-radius:25px;
+    background:#00ccff;
+    color:#000;
+    font-weight:bold;
+    cursor:pointer;
+  }
+
+  .deal-btn.show{
+    display:inline-block;
+  }
+
+  .video-container{
+    display:flex;
+    justify-content:center;
+    margin:10px 0;
+    align-items:center;
+    gap:6px;
+  }
+
+  .video-container video{
+    width:120px;
+    aspect-ratio:3/4;
+    object-fit:cover;
+    border-radius:10px;
+  }
+
+  .video-text{
+    font-size:0.7rem;
+    color:#fff;
+    margin-left:4px;
+  }
+
+  .price{
+    color:#00ff00;
+    font-weight:bold;
+    font-size:1.1rem;
+    text-shadow:0 0 8px #00ff00,0 0 15px #00ff00;
+    display:inline-block;
+    animation:float 2s ease-in-out infinite;
+  }
+
+  @keyframes float{50%{transform:translateY(-6px)}}
+
+  @media(max-width:400px){
+    h1{font-size:1.5rem;}
+    .profile-pic{width:60px;height:60px;}
+    .handle{font-size:1rem;}
+    .video-container video{width:90px;}
+  }
 </style>
 </head>
+
 <body>
 
-<div class="page">
-<div class="container">
+<h1 id="title">Social Media Management</h1>
 
-<img src="social-management-pic.PNG" class="profile-pic" alt="Social Media Management Picture">
+<div class="profile-row">
+  <img src="social-management-pic.PNG" class="profile-pic">
+  <span class="handle">@justtt_ej</span>
+</div>
 
-<h1 id="title">Social Media Management Packages</h1>
 <p class="description" id="desc">
-Manage your socials with tailored content plans, viral content, and high engagement strategies.
+Manage your social media accounts professionally. Choose a package below and click the Deal button to start.
 </p>
 
-<div class="pricing">
+<div class="packages">
 
-<!-- Basic -->
-<div class="price-card" id="basicCard">
-<h2>Basic Package</h2>
-<p>Record with iPhone, simple editing, 3 videos/week, viral content</p>
-<p class="price">17,999 Birr</p>
-<video class="example-video" autoplay loop muted playsinline>
-<source src="example-video1.MP4" type="video/MP4">
-</video>
-<button class="deal-btn" id="dealBasic">Deal / ተስማማ</button>
-</div>
+  <!-- BASIC -->
+  <div class="package-card" data-sms="I choose Basic Package, record with iPhone, simple editing, 3 videos/week, viral content — 17,999 Birr">
+    <h2>Basic Package</h2>
+    <p>Record with iPhone, simple editing, 3 videos/week, viral content — <span class="price">17,999 Birr</span></p>
+    <div class="video-container">
+      <video autoplay loop muted playsinline>
+        <source src="example-video1.MP4" type="video/mp4">
+      </video>
+      <span class="video-text">example video</span>
+    </div>
+    <button class="deal-btn" data-lang="en">Deal</button>
+  </div>
 
-<!-- Standard -->
-<div class="price-card" id="standardCard">
-<h2>Standard Package</h2>
-<p>Professional cinema camera rental, massive editing, motion graphics, 3 videos/week, viral content</p>
-<p class="price">31,999 Birr</p>
-<video class="example-video" autoplay loop muted playsinline>
-<source src="example-video2.MP4" type="video/MP4">
-</video>
-<button class="deal-btn" id="dealStandard">Deal / ተስማማ</button>
-</div>
+  <!-- STANDARD -->
+  <div class="package-card" data-sms="I choose Standard Package, Professional cinema camera, massive editing & motion graphics, 3 videos/week, viral content — 30,999 Birr">
+    <h2>Standard Package</h2>
+    <p>Professional cinema camera rental, massive editing & motion graphics, 3 videos/week, viral content — <span class="price">30,999 Birr</span></p>
+    <div class="video-container">
+      <video autoplay loop muted playsinline>
+        <source src="example-video2.MP4" type="video/mp4">
+      </video>
+      <span class="video-text">example video</span>
+    </div>
+    <button class="deal-btn" data-lang="en">Deal</button>
+  </div>
 
-<!-- Premium -->
-<div class="price-card" id="premiumCard">
-<h2>Premium Package</h2>
-<p>Big difference, 3–5 videos/week, professional production, viral content, motion graphics, stories & posts on all socials</p>
-<p class="price">36,999 Birr</p>
-<video class="example-video" autoplay loop muted playsinline>
-<source src="example-video3.MP4" type="video/MP4">
-</video>
-<button class="deal-btn" id="dealPremium">Deal / ተስማማ</button>
-</div>
+  <!-- PREMIUM -->
+  <div class="package-card" data-sms="I choose Premium Package, 3-5 videos/week, high-end editing, content strategy, viral content — 36,999 Birr">
+    <h2>Premium Package</h2>
+    <p>3-5 videos/week, high-end editing, content strategy, engagement boosting, viral content — <span class="price">36,999 Birr</span></p>
+    <div class="video-container">
+      <video autoplay loop muted playsinline>
+        <source src="example-video3.MP4" type="video/mp4">
+      </video>
+      <span class="video-text">example video</span>
+    </div>
+    <button class="deal-btn" data-lang="en">Deal</button>
+  </div>
 
-</div>
-</div>
 </div>
 
 <script>
-// LANGUAGE SWITCH
-const dealBasic = document.getElementById("dealBasic");
-const dealStandard = document.getElementById("dealStandard");
-const dealPremium = document.getElementById("dealPremium");
+// LANGUAGE
+const lang = localStorage.getItem("lang") || "en";
+const dealButtons = document.querySelectorAll(".deal-btn");
+const title = document.getElementById("title");
+const desc = document.getElementById("desc");
 
-function updateLanguage(lang){
-  if(lang==="am"){
-    dealBasic.innerText="ተስማማ";
-    dealStandard.innerText="ተስማማ";
-    dealPremium.innerText="ተስማማ";
+function updateLanguage(l){
+  dealButtons.forEach(btn=>{
+    btn.innerText = (l==="am") ? "ተስማማ" : "Deal";
+  });
+  if(l==="am"){
+    title.innerText="ሶሻል ሚዲያ አስተዳደር";
+    desc.innerText="አካውንቶችን በሙያ አስተዳደር ይዘት ይከተሉ። ፓኬጆችን ይምረጡ እና በተስማማ ቁልፍ ጀምሩ።";
   }else{
-    dealBasic.innerText="Deal";
-    dealStandard.innerText="Deal";
-    dealPremium.innerText="Deal";
+    title.innerText="Social Media Management";
+    desc.innerText="Manage your social media accounts professionally. Choose a package below and click the Deal button to start.";
   }
 }
+updateLanguage(lang);
 
-updateLanguage(localStorage.getItem("lang") || "en");
+// PACKAGE SELECTION
+const packages = document.querySelectorAll(".package-card");
+packages.forEach(pack=>{
+  const dealBtn = pack.querySelector(".deal-btn");
 
-// SHOW DEAL BUTTONS ON CLICK
-const cards = [basicCard, standardCard, premiumCard];
-const deals = [dealBasic, dealStandard, dealPremium];
-cards.forEach((card, i)=>{
-  card.onclick=()=>{
-    deals[i].style.display="inline-block";
-  }
+  pack.addEventListener("click", ()=>{
+    packages.forEach(p=>{
+      p.classList.remove("selected");
+      p.querySelector(".deal-btn").classList.remove("show");
+    });
+    pack.classList.add("selected");
+    dealBtn.classList.add("show");
+  });
+
+  dealBtn.addEventListener("click", e=>{
+    e.stopPropagation();
+    const smsText = encodeURIComponent(pack.dataset.sms);
+    window.location.href=`sms:+251923406940&body=${smsText}`;
+  });
 });
-
-// DEAL BUTTON ACTION (SMS)
-dealBasic.onclick=()=>window.location="sms:+251923406940?body=I choose Basic Package, we can start working";
-dealStandard.onclick=()=>window.location="sms:+251923406940?body=I choose Standard Package, we can start working";
-dealPremium.onclick=()=>window.location="sms:+251923406940?body=I choose Premium Package, we can start working";
 </script>
 
 </body>
