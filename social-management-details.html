@@ -14,12 +14,8 @@ body{
   align-items:center;
   padding:20px;
 }
-
-/* PAGE FADE */
 .page{opacity:0;animation:fade .6s ease forwards;}
 @keyframes fade{to{opacity:1}}
-
-/* CONTAINER */
 .container{
   max-width:700px;
   width:100%;
@@ -30,18 +26,12 @@ body{
   flex-direction:column;
   align-items:center;
 }
-
-/* TOP PROFILE PIC */
 .profile-pic{
   width:180px;height:180px;border-radius:50%;
   object-fit:cover;border:5px solid #fff;margin-bottom:20px;
 }
-
-/* TITLE */
 h1{text-align:center;margin-bottom:15px;text-shadow:0 0 15px #fff;}
 p.description{text-align:center;margin-bottom:25px;text-shadow:0 0 10px #fff;line-height:1.5;}
-
-/* PRICING */
 .pricing{display:flex;flex-direction:column;gap:20px;width:100%;}
 .price-card{
   background: rgba(0,0,0,0.6);
@@ -60,8 +50,6 @@ p.description{text-align:center;margin-bottom:25px;text-shadow:0 0 10px #fff;lin
   text-shadow:0 0 10px #0f0,0 0 20px #0f0,0 0 30px #0f0;
 }
 @keyframes float{50%{transform:translateY(-6px)}}
-
-/* EXAMPLE VIDEOS */
 .example-video{
   width:90%;max-width:300px;
   aspect-ratio:3/4;
@@ -69,8 +57,6 @@ p.description{text-align:center;margin-bottom:25px;text-shadow:0 0 10px #fff;lin
   margin:8px 0;
   pointer-events:none;
 }
-
-/* DEAL BUTTON */
 .deal-btn{
   margin-top:5px;
   padding:8px 15px;
@@ -88,7 +74,7 @@ p.description{text-align:center;margin-bottom:25px;text-shadow:0 0 10px #fff;lin
 <div class="page">
 <div class="container">
 
-<img src="social-management-pic.png" class="profile-pic" alt="Social Media Management Picture">
+<img src="social-management-pic.PNG" class="profile-pic" alt="Social Media Management Picture">
 
 <h1 id="title">Social Media Management Packages</h1>
 <p class="description" id="desc">
@@ -103,7 +89,7 @@ Manage your socials with tailored content plans, viral content, and high engagem
 <p>Record with iPhone, simple editing, 3 videos/week, viral content</p>
 <p class="price">17,999 Birr</p>
 <video class="example-video" autoplay loop muted playsinline>
-<source src="example-video1.mp4" type="video/mp4">
+<source src="example-video1.MP4" type="video/MP4">
 </video>
 <button class="deal-btn" id="dealBasic">Deal / ተስማማ</button>
 </div>
@@ -114,7 +100,7 @@ Manage your socials with tailored content plans, viral content, and high engagem
 <p>Professional cinema camera rental, massive editing, motion graphics, 3 videos/week, viral content</p>
 <p class="price">31,999 Birr</p>
 <video class="example-video" autoplay loop muted playsinline>
-<source src="example-video2.mp4" type="video/mp4">
+<source src="example-video2.MP4" type="video/MP4">
 </video>
 <button class="deal-btn" id="dealStandard">Deal / ተስማማ</button>
 </div>
@@ -125,7 +111,7 @@ Manage your socials with tailored content plans, viral content, and high engagem
 <p>Big difference, 3–5 videos/week, professional production, viral content, motion graphics, stories & posts on all socials</p>
 <p class="price">36,999 Birr</p>
 <video class="example-video" autoplay loop muted playsinline>
-<source src="example-video3.mp4" type="video/mp4">
+<source src="example-video3.MP4" type="video/MP4">
 </video>
 <button class="deal-btn" id="dealPremium">Deal / ተስማማ</button>
 </div>
@@ -136,7 +122,6 @@ Manage your socials with tailored content plans, viral content, and high engagem
 
 <script>
 // LANGUAGE SWITCH
-const am = false; // placeholder, should read from localStorage if needed
 const dealBasic = document.getElementById("dealBasic");
 const dealStandard = document.getElementById("dealStandard");
 const dealPremium = document.getElementById("dealPremium");
