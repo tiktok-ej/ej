@@ -36,13 +36,8 @@ button{
   transition:.3s;
 }
 
-#tiktokBtn{
+#tiktokBtn, #socialBtn {
   background:#ff3b3b;
-  color:#fff;
-}
-
-#socialBtn{
-  background:#444;
   color:#fff;
 }
 
@@ -79,9 +74,8 @@ function setLang(lang){
 const saved = localStorage.getItem("lang") || "en";
 setLang(saved);
 
-// Button actions
-tiktokBtn.onclick = () => window.location = "tiktok-promo-details.html";
-socialBtn.onclick = () => window.location = "social-management-details.html"; // now enabled
+tiktokBtn.onclick = ()=> window.location="tiktok-promo-details.html";
+socialBtn.onclick = ()=> window.location="social-management-details.html";
 </script>
 
 </body>
